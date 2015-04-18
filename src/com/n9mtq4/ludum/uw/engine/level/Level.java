@@ -11,6 +11,16 @@ public class Level {
 	private int height;
 	private int[] tiles;
 	
+	public Level(int width, int height) {
+		this.width = width;
+		this.height = height;
+		generateLevel();
+	}
+	
+	public void generateLevel() {
+		
+	}
+	
 	public Level(String path) {
 		loadLevel(path);
 	}

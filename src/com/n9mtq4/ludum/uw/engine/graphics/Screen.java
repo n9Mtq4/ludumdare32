@@ -35,13 +35,12 @@ public class Screen {
 	public void render(int xOff, int yOff) {
 		
 		for (int y = 0; y < height; y++) {
-			int yy = y;
-//			if (yy < 0 || yy >= height) break;
+			int yp = y + yOff;
+			if (yp < 0 || yp >= height) continue;
 			for (int x = 0; x < width; x++) {
-				int xx = x;
-//				if (xx < 0 || xx >= width) break;
-				int tileIndex = ((xx + xOff >> TILE_SIZE) & LEVEL_WIDTH_MASK) + ((yy + yOff  >> TILE_SIZE) & LEVEL_HEIGHT_MASK) * LEVEL_WIDTH;
-				pixels[x + y * width] = Sprites.wood.pixels[(x & 31) + (y & 31) * 32];
+				int xp = x + xOff;
+				if (xp < 0 || xp >= width) continue;
+				pixels[xp + yp * width] = Sprites.wood.pixels[(x & Sprites.wood.SIZE_MASK) + (y & Sprites.wood.SIZE_MASK) * Sprites.wood.SIZE];
 			}
 		}
 		

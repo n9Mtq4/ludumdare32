@@ -19,6 +19,7 @@ public class Sprite {
 		this.y = y * SIZE;
 		this.sheet = sheet;
 		this.pixels = new int[SIZE * SIZE];
+		load();
 	}
 	
 	private void load() {

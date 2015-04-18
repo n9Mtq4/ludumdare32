@@ -74,7 +74,7 @@ public class Display extends Canvas implements Runnable {
 		g.setColor(Color.BLACK);
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		
-		if (DEBUG) { // TODO: change to debug latter
+		if (DEBUG) {
 			g.setColor(new Color(255, 255, 0));
 			g.setFont(new Font("Verdana", Font.BOLD, 36));
 			g.drawString(String.valueOf(fps), 0, 30);
@@ -107,6 +107,7 @@ public class Display extends Canvas implements Runnable {
 		int tickCount = 0;
 		boolean ticked = false;
 		
+		requestFocus();
 		while (running) {
 			
 //			game loop

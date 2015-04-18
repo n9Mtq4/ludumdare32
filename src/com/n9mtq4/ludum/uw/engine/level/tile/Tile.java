@@ -17,7 +17,7 @@ public class Tile {
 	}
 	
 	public void render(int x, int y, Screen screen) {
-		
+		screen.renderTile(x << Screen.TILE_SIZE, y << Screen.TILE_SIZE, this); //TODO: is this the problem
 	}
 	
 	public boolean isSolid() {

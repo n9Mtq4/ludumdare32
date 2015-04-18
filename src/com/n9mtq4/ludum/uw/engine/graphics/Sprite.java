@@ -12,6 +12,13 @@ public class Sprite {
 	public int[] pixels;
 	private SpriteSheet sheet;
 	
+	public Sprite(int size, int color) {
+		this.SIZE = size;
+		this.SIZE_MASK = SIZE - 1;
+		pixels = new int[SIZE * SIZE];
+		setColor(color);
+	}
+	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		this.SIZE = size;
 		this.SIZE_MASK = SIZE - 1;
@@ -20,6 +27,12 @@ public class Sprite {
 		this.sheet = sheet;
 		this.pixels = new int[SIZE * SIZE];
 		load();
+	}
+	
+	private void setColor(int color) {
+		for (int i = 0; i < pixels.length; i++) {
+			pixels[i] = color;
+		}
 	}
 	
 	private void load() {

@@ -2,6 +2,8 @@ package com.n9mtq4.ludum.uw.engine;
 
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
+import com.n9mtq4.ludum.uw.engine.level.Level;
+import com.n9mtq4.ludum.uw.game.level.Floor;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -24,6 +26,7 @@ public class Display extends Canvas implements Runnable {
 	private int fps;
 	
 	private Screen screen;
+	private Level level;
 	private KeyBoard keyBoard;
 	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -36,6 +39,7 @@ public class Display extends Canvas implements Runnable {
 		this.screen = new Screen(WIDTH, HEIGHT);
 		this.keyBoard = new KeyBoard();
 		addKeyListener(keyBoard);
+		level = new Floor(64, 64);
 	}
 	
 	public synchronized void start() {
@@ -65,7 +69,8 @@ public class Display extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		screen.render(x, y);
+		level.render(x, y, screen);
+		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}

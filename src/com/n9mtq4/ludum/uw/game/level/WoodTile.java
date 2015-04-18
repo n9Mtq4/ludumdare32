@@ -1,6 +1,5 @@
 package com.n9mtq4.ludum.uw.game.level;
 
-import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 import com.n9mtq4.ludum.uw.game.Sprites;
 
@@ -11,11 +10,6 @@ public class WoodTile extends Tile {
 	
 	public WoodTile() {
 		super(Sprites.wood);
-	}
-	
-	@Override
-	public void render(int x, int y, Screen screen) {
-		screen.renderTile(x, y, this);
 	}
 	
 }

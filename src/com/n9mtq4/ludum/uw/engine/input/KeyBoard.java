@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
  */
 public class KeyBoard implements KeyListener {
 	
-	private boolean[] keys = new boolean[128]; // 128 keys
+	private boolean[] keys = new boolean[180]; // 128 keys
 	public boolean up, down, left, right;
 	
 	public boolean hasKeyBeenPressed(int keyCode) {

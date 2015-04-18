@@ -1,6 +1,6 @@
 package com.n9mtq4.ludum.uw.engine.graphics;
 
-import java.util.Random;
+import com.n9mtq4.ludum.uw.game.Sprites;
 
 /**
  * Created by will on 4/17/15.
@@ -24,16 +24,11 @@ public class Screen {
 		this.pixels = new int[width * height];
 		this.tiles = new int[LEVEL_WIDTH * LEVEL_HEIGHT];
 		
-		Random random = new Random();
-		for (int i = 0; i < tiles.length; i++) {
-			tiles[i] = random.nextInt(0xfffffff);
-		}
-		
 	}
 	
 	public void clear() {
 		for (int i = 0; i < pixels.length; i++) {
-			pixels[i] = 0x000000; // hex black
+			pixels[i] = 0; // black
 		}
 	}
 	
@@ -43,10 +38,10 @@ public class Screen {
 			int yy = y;
 //			if (yy < 0 || yy >= height) break;
 			for (int x = 0; x < width; x++) {
-				int xx = x - 3;
+				int xx = x;
 //				if (xx < 0 || xx >= width) break;
 				int tileIndex = ((xx + xOff >> TILE_SIZE) & LEVEL_WIDTH_MASK) + ((yy + yOff  >> TILE_SIZE) & LEVEL_HEIGHT_MASK) * LEVEL_WIDTH;
-				pixels[x + y * width] = tiles[tileIndex];
+				pixels[x + y * width] = Sprites.wood.pixels[(x & 31) + (y & 31) * 32];
 			}
 		}
 		

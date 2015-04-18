@@ -1,4 +1,4 @@
-package com.n9mtq4.ludum.uw.input;
+package com.n9mtq4.ludum.uw.engine.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

@@ -1,7 +1,7 @@
 package com.n9mtq4.ludum.uw.engine;
 
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
-import com.n9mtq4.ludum.uw.input.KeyBoard;
+import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -72,7 +72,6 @@ public class Display extends Canvas implements Runnable {
 		
 		Graphics g = bs.getDrawGraphics();
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		
 		if (DEBUG) { // TODO: change to debug latter

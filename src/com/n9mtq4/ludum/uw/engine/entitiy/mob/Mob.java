@@ -8,13 +8,9 @@ import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
  */
 public abstract class Mob extends Entitiy {
 	
-	protected Sprite sprite;
-	protected int dir = 0;
-	protected boolean moving = false;
-	
-	public void render() {
-		
-	}
+	public Sprite sprite;
+	public int dir = 0;
+	public boolean moving = false;
 	
 	public void tick() {
 		

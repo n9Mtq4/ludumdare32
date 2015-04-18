@@ -1,9 +1,11 @@
 package com.n9mtq4.ludum.uw.engine;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.engine.level.Level;
 import com.n9mtq4.ludum.uw.game.level.Floor;
+import com.n9mtq4.ludum.uw.game.player.MainPlayer;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -28,6 +30,7 @@ public class Display extends Canvas implements Runnable {
 	private Screen screen;
 	private Level level;
 	private KeyBoard keyBoard;
+	private Player player;
 	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -40,6 +43,7 @@ public class Display extends Canvas implements Runnable {
 		this.keyBoard = new KeyBoard();
 		addKeyListener(keyBoard);
 		level = new Floor(64, 64);
+		player = new MainPlayer(1, 1, keyBoard);
 	}
 	
 	public synchronized void start() {
@@ -69,7 +73,10 @@ public class Display extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		level.render(x, y, screen);
+		int xScroll = player.x - screen.width / 2;
+		int yScroll = player.y - screen.height / 2;
+		level.render(xScroll, yScroll, screen); //TODO: fix
+		player.render(screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -83,6 +90,7 @@ public class Display extends Canvas implements Runnable {
 			g.setColor(new Color(255, 255, 0));
 			g.setFont(new Font("Verdana", Font.BOLD, 36));
 			g.drawString(String.valueOf(fps), 0, 30);
+			g.setFont(new Font("Verdana", Font.BOLD, 12));
 		}
 		
 		g.dispose();
@@ -90,15 +98,10 @@ public class Display extends Canvas implements Runnable {
 		
 	}
 	
-	int x = 0;
-	int y = 0;
 	public void tick() {
 		
 		keyBoard.update();
-		if (keyBoard.up) y--;
-		if (keyBoard.down) y++;
-		if (keyBoard.left) x--;
-		if (keyBoard.right) x++;
+		player.tick(); //TODO: change maybe?
 		
 	}
 	

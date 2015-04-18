@@ -1,34 +1,41 @@
 package com.n9mtq4.ludum.uw.engine.entitiy.mob;
 
+import com.n9mtq4.ludum.uw.engine.graphics.Screen;
+import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
+
 /**
  * Created by will on 4/18/15 at 3:11 PM.
  */
 public class Player extends Mob {
 	
-	public Player(int x, int y) {
+	private KeyBoard input;
+	private int speed;
+	
+	public Player(int x, int y, KeyBoard input) {
 		
 		this.x = x;
 		this.y = y;
+		this.input = input;
+		this.speed = 2;
 		
 	}
 	
-	public Player() {
-		this(0, 0); //TODO: change later
+	public Player(KeyBoard input) {
+		this(0, 0, input); //TODO: change later
 	}
 	
 	@Override
-	public void render() {
-		super.render();
+	public void render(Screen screen) {
+		screen.renderPlayer(x, y, this);
 	}
 	 
 	@Override
 	public void tick() {
 		super.tick();
-	}
-	
-	@Override
-	public void move() {
-		super.move(0, 0);
+		if (input.up) move(0, -speed);
+		if (input.down) move(0, speed);
+		if (input.left) move(-speed, 0);
+		if (input.right) move(speed, 0);
 	}
 	
 	@Override

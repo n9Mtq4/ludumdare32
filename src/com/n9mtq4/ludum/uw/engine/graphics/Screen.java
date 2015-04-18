@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.engine.graphics;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 
 /**
@@ -12,6 +13,7 @@ public class Screen {
 	private static final int LEVEL_HEIGHT = 64;
 	private static final int LEVEL_WIDTH_MASK = LEVEL_WIDTH - 1;
 	private static final int LEVEL_HEIGHT_MASK = LEVEL_HEIGHT - 1;
+	private static final int TRANSPARENT = 0xffff00ff;
 	
 	public int width;
 	public int height;
@@ -35,6 +37,26 @@ public class Screen {
 		}
 	}
 	
+	public void renderPlayer(int xp, int yp, Player player) {
+		
+		yp -= yOff;
+		xp -= xOff;
+		for (int y = 0; y < player.sprite.SIZE; y++) {
+			int ya = y + yp;
+			for (int x = 0; x < player.sprite.SIZE; x++) {
+				int xa = x + xp;
+				if (xa < -player.sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if (xa < 0) xa = 0;
+//				System.out.println((xa + ya * width) + " : (" + xa + " + " + ya + " * " + width + ")");
+				int col = player.sprite.pixels[x + y * player.sprite.SIZE];
+				if (col != TRANSPARENT) {
+					pixels[xa + ya * width] = col;
+				}
+			}
+		}
+		
+	}
+	
 	public void renderTile(int xp, int yp, Tile tile) {
 		yp -= yOff;
 		xp -= xOff;
@@ -45,7 +67,9 @@ public class Screen {
 				if (xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
 				if (xa < 0) xa = 0;
 //				System.out.println((xa + ya * width) + " : (" + xa + " + " + ya + " * " + width + ")");
-				pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
+				if (tile.sprite.pixels[x + y * tile.sprite.SIZE] != TRANSPARENT) {
+					pixels[xa + ya * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
+				}
 			}
 		}
 		

@@ -12,5 +12,6 @@ public class Sprites {
 	private static SpriteSheet sheet = new SpriteSheet("/textures/spritesheet.png", 256);
 	public static Sprite wood = new Sprite(Tiles.SIZE, 0, 0, sheet);
 	public static Sprite voidSprite = new Sprite(Tiles.SIZE, 0x000000);
+	public static Sprite player2 = new Sprite(Tiles.SIZE, 1, 0, sheet);
 	
 }

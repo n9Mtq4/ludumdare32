@@ -1,6 +1,7 @@
 package com.n9mtq4.ludum.uw.engine;
 
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
+import com.n9mtq4.ludum.uw.input.KeyBoard;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -16,12 +17,14 @@ public class Display extends Canvas implements Runnable {
 	public static final int HEIGHT = (WIDTH / 16) * 9; // 16 by 9 ratio. if width = 720, height = 405
 	public static final int SCALE = 1;
 	public static final double GAME_SPEED = 60.0d;
+	public static final boolean DEBUG = true;
 	
 	private Thread thread;
 	private boolean running;
 	private int fps;
 	
 	private Screen screen;
+	private KeyBoard keyBoard;
 	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -30,7 +33,9 @@ public class Display extends Canvas implements Runnable {
 		super(); // canvas constructor doesn't actually do anything, but its nice to have
 		Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
 		setPreferredSize(size);
-		screen = new Screen(WIDTH, HEIGHT);
+		this.screen = new Screen(WIDTH, HEIGHT);
+		this.keyBoard = new KeyBoard();
+		addKeyListener(keyBoard);
 	}
 	
 	public synchronized void start() {
@@ -60,7 +65,7 @@ public class Display extends Canvas implements Runnable {
 		}
 		
 		screen.clear();
-		screen.render();
+		screen.render(x, y);
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
@@ -70,7 +75,7 @@ public class Display extends Canvas implements Runnable {
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		
-		if (true) { // TODO: change to debug latter
+		if (DEBUG) { // TODO: change to debug latter
 			g.setColor(new Color(255, 255, 0));
 			g.setFont(new Font("Verdana", Font.BOLD, 36));
 			g.drawString(String.valueOf(fps), 0, 30);
@@ -81,9 +86,15 @@ public class Display extends Canvas implements Runnable {
 		
 	}
 	
+	int x = 0;
+	int y = 0;
 	public void tick() {
 		
-		
+		keyBoard.update();
+		if (keyBoard.up) y--;
+		if (keyBoard.down) y++;
+		if (keyBoard.left) x--;
+		if (keyBoard.right) x++;
 		
 	}
 	

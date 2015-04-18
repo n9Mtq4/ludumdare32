@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Screen {
 	
-	private static final int TILE_SIZE = 4; // 2^TILE_SIZE is the pixel equivalent
+	private static final int TILE_SIZE = 5; // 2^TILE_SIZE is the pixel equivalent
 	private static final int LEVEL_WIDTH = 64;
 	private static final int LEVEL_HEIGHT = 64;
 	private static final int LEVEL_WIDTH_MASK = LEVEL_WIDTH - 1;
@@ -33,7 +33,7 @@ public class Screen {
 	
 	public void clear() {
 		for (int i = 0; i < pixels.length; i++) {
-			pixels[i] = 0x000000; // black
+			pixels[i] = 0x000000; // hex black
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class Screen {
 			for (int x = 0; x < width; x++) {
 				int xx = x - 3;
 //				if (xx < 0 || xx >= width) break;
-				int tileIndex = ((xx >> TILE_SIZE) & LEVEL_WIDTH_MASK) + ((yy  >> TILE_SIZE) & LEVEL_HEIGHT_MASK) * LEVEL_WIDTH;
+				int tileIndex = ((xx + xOff >> TILE_SIZE) & LEVEL_WIDTH_MASK) + ((yy + yOff  >> TILE_SIZE) & LEVEL_HEIGHT_MASK) * LEVEL_WIDTH;
 				pixels[x + y * width] = tiles[tileIndex];
 			}
 		}

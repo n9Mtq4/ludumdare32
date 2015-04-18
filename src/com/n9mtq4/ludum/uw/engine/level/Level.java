@@ -43,7 +43,10 @@ public class Level {
 	 * renders everything
 	 * */
 	public void render(int xScroll, int yScroll, Screen screen) {
-		
+		int x0 = xScroll >> Screen.TILE_SIZE;
+		int x1 = (xScroll + screen.width) >> Screen.TILE_SIZE;
+		int y0 = yScroll >> Screen.TILE_SIZE;
+		int y1 = (yScroll + screen.height) >> Screen.TILE_SIZE;
 	}
 	
 }

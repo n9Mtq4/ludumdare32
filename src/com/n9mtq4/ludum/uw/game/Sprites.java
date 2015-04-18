@@ -13,7 +13,8 @@ public class Sprites {
 	public static Sprite wood = new Sprite(Tiles.SIZE, 0, 0, sheet);
 	public static Sprite voidSprite = new Sprite(Tiles.SIZE, 0x000000);
 	public static Sprite wall = new Sprite(Tiles.SIZE, 0x000000);
-	
+	public static Sprite bed = new Sprite(Tiles.SIZE, 0, 1, sheet);
+	public static Sprite pillow = new Sprite(Tiles.SIZE, 0, 2, sheet);
 	
 	public static Sprite playerb = new Sprite(Tiles.SIZE, 1, 0, sheet);
 	public static Sprite playerf = new Sprite(Tiles.SIZE, 1, 1, sheet);

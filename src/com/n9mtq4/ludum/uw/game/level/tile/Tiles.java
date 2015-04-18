@@ -9,6 +9,10 @@ import com.n9mtq4.ludum.uw.engine.level.tile.VoidTile;
 public class Tiles {
 	
 	public static final int SIZE = 32;
-	public static Tile[] tiles = {new VoidTile(), new WoodTile(), };
+	public static Tile voidTile = new VoidTile();
+	public static Tile wood = new WoodTile();
+	public static Tile wall = new WallTile();
+	public static Tile bed = new BedTile();
+	public static Tile pillow = new PillowTile();
 	
 }

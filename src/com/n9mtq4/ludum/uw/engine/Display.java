@@ -4,6 +4,7 @@ import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.engine.level.Level;
+import com.n9mtq4.ludum.uw.game.level.Bedroom;
 import com.n9mtq4.ludum.uw.game.level.Floor;
 import com.n9mtq4.ludum.uw.game.player.MainPlayer;
 
@@ -42,8 +43,8 @@ public class Display extends Canvas implements Runnable {
 		this.screen = new Screen(WIDTH, HEIGHT);
 		this.keyBoard = new KeyBoard();
 		addKeyListener(keyBoard);
-		level = new Floor(64, 64);
-		player = new MainPlayer(1, 1, keyBoard);
+		level = new Bedroom();
+		player = new MainPlayer(8, 8, keyBoard);
 	}
 	
 	public synchronized void start() {

@@ -20,17 +20,21 @@ public class Floor extends Level {
 	@Override
 	public void generateLevel() {
 		
-		tiles = new int[width * height];
+	/*	tiles = new int[width * height];
 		for (int i = 0; i < tiles.length; i++) {
 			tiles[i] = 1;
 		}
-		
+		*/
 	}
 	
 	@Override
 	public Tile getTile(int x, int y) {
-		if (checkBounds(x, y)) return Tiles.tiles[0];
-		return Tiles.tiles[tiles[x + y * width]];
+		if (checkBounds(x, y)) return Tiles.voidTile;
+		if (tiles[x + y * width] == 0xff0f0f0f) return Tiles.voidTile;
+		if (tiles[x + y * width] == 0xfffffffe) return Tiles.wood;
+		if (tiles[x + y * width] == 0xff000001) return Tiles.bed;
+		if (tiles[x + y * width] == 0xff000002) return Tiles.pillow;
+		return Tiles.voidTile;
 	}
 	
 }

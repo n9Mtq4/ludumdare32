@@ -28,9 +28,8 @@ public class Floor extends Level {
 	
 	@Override
 	public Tile getTile(int x, int y) {
-		if (tiles[x + y * width] == 0 || checkBounds(x, y)) return Tiles.tiles[0];
+		if (checkBounds(x, y)) return Tiles.tiles[0];
 		return Tiles.tiles[tiles[x + y * width]];
-//		return Tiles.tiles[1];
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.n9mtq4.ludum.uw.engine.entitiy.mob;
 
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
+import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 
 /**
@@ -10,6 +11,11 @@ public class Player extends Mob {
 	
 	private KeyBoard input;
 	private int speed;
+	
+	protected Sprite foward;
+	protected Sprite backwards;
+	protected Sprite left;
+	protected Sprite right;
 	
 	public Player(int x, int y, KeyBoard input) {
 		
@@ -26,7 +32,15 @@ public class Player extends Mob {
 	
 	@Override
 	public void render(Screen screen) {
-		screen.renderPlayer(x, y, this);
+		if (dir == 0) {
+			screen.renderPlayer(x, y, foward);
+		}else if (dir == 1) {
+			screen.renderPlayer(x, y, right);
+		}else if (dir == 2) {
+			screen.renderPlayer(x, y, backwards);
+		}else if (dir == 3) {
+			screen.renderPlayer(x, y, left);
+		}
 	}
 	 
 	@Override

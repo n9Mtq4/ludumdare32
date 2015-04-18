@@ -15,7 +15,10 @@ public class MainPlayer extends Player {
 	
 	public MainPlayer(int x, int y, KeyBoard input) {
 		super(x, y, input);
-		this.sprite = Sprites.player2;
+		this.backwards = Sprites.playerb;
+		this.foward = Sprites.playerf;
+		this.left = Sprites.playerl;
+		this.right = Sprites.playerr;
 	}
 	
 }

@@ -2,7 +2,7 @@ package com.n9mtq4.ludum.uw.engine.level;
 
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
-import com.n9mtq4.ludum.uw.game.level.Tiles;
+import com.n9mtq4.ludum.uw.game.level.tile.Tiles;
 
 /**
  * Created by will on 4/17/15.
@@ -27,7 +27,7 @@ public class Level {
 		loadLevel(path);
 	}
 	
-	private void loadLevel(String path) {
+	public void loadLevel(String path) {
 		
 		
 		

@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.game.level.tile;
 
+import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 import com.n9mtq4.ludum.uw.game.Sprites;
 
@@ -8,8 +9,8 @@ import com.n9mtq4.ludum.uw.game.Sprites;
  */
 public class BedTile extends Tile {
 	
-	public BedTile() {
-		super(Sprites.bed);
+	public BedTile(Sprite sprite) {
+		super(sprite);
 	}
 	
 }

@@ -15,7 +15,7 @@ public class Display extends Canvas implements Runnable {
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = (WIDTH / 16) * 9; // 16 by 9 ratio. if width = 720, height = 405
 	public static final int SCALE = 1;
-	public static final double GAME_SPEED = 30.0d;
+	public static final double GAME_SPEED = 60.0d;
 	
 	private Thread thread;
 	private boolean running;
@@ -113,10 +113,11 @@ public class Display extends Canvas implements Runnable {
 				tickCount++;
 				if (tickCount % GAME_SPEED == 0) {
 					
-					System.out.println(frames + " fps");
+					System.out.println(tickCount + " ups, " + frames + " fps");
 					previousTime += 1000;
 					fps = frames;
 					frames = 0;
+					tickCount = 0;
 					
 				}
 				

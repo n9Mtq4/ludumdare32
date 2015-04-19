@@ -9,19 +9,20 @@ import com.n9mtq4.ludum.uw.game.Sprites;
  */
 public class PillowProjectile extends Projectile {
 	
+	public static int rateOfFire = 40; // delay between fire
+	
 	public PillowProjectile(int xOrigin, int yOrigin, double angle) {
 		super(xOrigin, yOrigin, angle);
-		range = 200;
+		range = 80;
 		damage = 10;
-		rateOfFire = 10;
-		speed = 4;
+		speed = 3;
 		sprite = Sprites.thrownPillow;
 		nx = speed * Math.cos(angle);
 		ny = speed * Math.sin(angle);
 	}
 	
+	@Override
 	public void render(Screen screen) {
-		screen.renderSprite(x, y, sprite);
+		super.render(screen);
 	}
-	
 }

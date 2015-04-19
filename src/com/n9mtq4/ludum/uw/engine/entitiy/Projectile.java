@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.engine.entitiy;
 
+import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 
 /**
@@ -7,6 +8,10 @@ import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
  */
 public class Projectile extends Entity {
 	
+	public static int rateOfFire;
+	
+	public double x;
+	public double y;
 	protected final int xOrigin;
 	protected final int yOrigin;
 	protected double angle;
@@ -14,7 +19,6 @@ public class Projectile extends Entity {
 	protected double nx;
 	protected double ny;
 	protected double speed;
-	protected double rateOfFire;
 	protected double range;
 	protected double damage;
 	
@@ -27,15 +31,28 @@ public class Projectile extends Entity {
 	}
 	
 	@Override
+	public void render(Screen screen) {
+		screen.renderSprite((int) x - sprite.SIZE, (int) y - sprite.SIZE, sprite);
+	}
+	
+	@Override
 	public void tick() {
 		
 		move();
+		checkDistance();
 		
 	}
 	
 	protected void move() {
 		x += nx;
 		y += ny;
+	}
+	
+	protected void checkDistance() {
+		double dist = Math.sqrt((xOrigin - x) * (xOrigin - x) + (yOrigin - y) * (yOrigin - y));
+		if (dist > range) {
+			this.remove();
+		}
 	}
 	
 }

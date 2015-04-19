@@ -1,11 +1,13 @@
 package com.n9mtq4.ludum.uw.game.entity.player;
 
 import com.n9mtq4.ludum.uw.engine.Display;
+import com.n9mtq4.ludum.uw.engine.entitiy.Projectile;
 import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.engine.input.Mouse;
 import com.n9mtq4.ludum.uw.game.Sprites;
+import com.n9mtq4.ludum.uw.game.entity.PillowProjectile;
 
 /**
  * Created by will on 4/17/15.
@@ -20,17 +22,24 @@ public class MainPlayer extends Player {
 		this.foward = Sprites.playerf;
 		this.left = Sprites.playerl;
 		this.right = Sprites.playerr;
+		this.fireRate = PillowProjectile.rateOfFire;
+	}
+	
+	@Override
+	public Projectile getShooter(int x, int y, double angle) {
+		return new PillowProjectile(x, y, angle);
 	}
 	
 	@Override
 	public void tick() {
 		super.tick();
-		if (Mouse.getButton() == 1) {
+		if (Mouse.getButton() == 1 && fireRate <= 0) {
 //			clicked so fire pillow
 			int dx = Mouse.getMouseX() - Display.getWindowWidth() / 2;
 			int dy = Mouse.getMouseY() - Display.getWindowHeight() / 2;
 			double dir = Math.atan2(dy, dx);
 			shoot(x, y, dir);
+			fireRate = PillowProjectile.rateOfFire;
 		}
 	}
 }

@@ -20,7 +20,7 @@ public class Level {
 	public int[] tiles;
 	public int[] tilesInt;
 	
-	private List<Entity> entities = new ArrayList<Entity>();
+	public List<Entity> entities = new ArrayList<Entity>(); //TODO: private
 	
 	public Level(int width, int height) {
 		this.width = width;
@@ -36,6 +36,10 @@ public class Level {
 	
 	public void add(Entity entity) {
 		entities.add(entity);
+	}
+	
+	public void remove(Entity entity) {
+		entities.remove(entity);
 	}
 	
 	public void generateLevel() {
@@ -60,8 +64,8 @@ public class Level {
 	}
 	
 	public void tick() {
-		for (Entity e : entities) {
-			e.tick();
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).tick();
 		}
 	}
 	
@@ -84,8 +88,8 @@ public class Level {
 				getTile(x, y).render(x, y, screen);
 			}
 		}
-		for (Entity e : entities) {
-			e.render(screen);
+		for (int i = 0; i < entities.size(); i++) {
+			entities.get(i).render(screen);
 		}
 	}
 	

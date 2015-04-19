@@ -18,19 +18,36 @@ public abstract class Mob extends Entity {
 	public int dir = 0;
 	public boolean moving = false;
 	
+	protected int fireRate = 0;
 	protected List<Projectile> projectiles = new ArrayList<Projectile>();
 	
 	public void tick() {
 		
+		if (fireRate > 0) fireRate--;
 		level.getTile((x) >> Screen.TILE_SIZE, (y) >> Screen.TILE_SIZE).mobIn(this);
+		clear();
 		
 	}
 	
 	public void shoot(int x, int y, double dir) {
 //		dir *= 180 / Math.PI;
-		Projectile p = new PillowProjectile(x, y, dir);
+		Projectile p = getShooter(x + 32, y + 32, dir); //TODO: no var!
 		projectiles.add(p);
 		level.add(p);
+	}
+	
+	public Projectile getShooter(int x, int y, double angle) {
+		return null;
+	}
+	
+	public void clear() {
+		for (int i = 0; i < projectiles.size(); i++) {
+			Projectile p = projectiles.get(i);
+			if (p.isRemoved()) {
+				projectiles.remove(i);
+				level.remove(p);
+			}
+		}
 	}
 	
 	public void move(int xd, int yd) {

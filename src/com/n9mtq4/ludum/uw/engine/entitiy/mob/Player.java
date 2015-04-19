@@ -12,6 +12,9 @@ public class Player extends Mob {
 	private KeyBoard input;
 	private int speed;
 	
+	public int health = 100;
+	public int maxHealth = 100;
+	
 	protected Sprite foward;
 	protected Sprite backwards;
 	protected Sprite left;

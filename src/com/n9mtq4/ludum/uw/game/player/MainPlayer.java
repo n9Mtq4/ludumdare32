@@ -10,9 +10,6 @@ import com.n9mtq4.ludum.uw.game.Sprites;
  */
 public class MainPlayer extends Player {
 	
-	public int health = 100;
-	public int maxHealth = 100;
-	
 	public MainPlayer(KeyBoard input) {
 		super(input);
 	}

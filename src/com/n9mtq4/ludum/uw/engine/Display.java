@@ -2,6 +2,7 @@ package com.n9mtq4.ludum.uw.engine;
 
 import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
+import com.n9mtq4.ludum.uw.engine.hud.Hud;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.engine.level.Level;
 import com.n9mtq4.ludum.uw.game.level.Bedroom;
@@ -17,7 +18,7 @@ import java.awt.image.DataBufferInt;
  */
 public class Display extends Canvas implements Runnable {
 	
-	public static final int WIDTH = 720;
+	public static final int WIDTH = 720; // must be multiple of 16
 	public static final int HEIGHT = (WIDTH / 16) * 9; // 16 by 9 ratio. if width = 720, height = 405
 	public static final int SCALE = 1;
 	public static final double GAME_SPEED = 60.0d;
@@ -28,6 +29,7 @@ public class Display extends Canvas implements Runnable {
 	private int fps;
 	
 	private Screen screen;
+	private Hud hud;
 	private Level level;
 	private KeyBoard keyBoard;
 	private Player player;
@@ -44,6 +46,7 @@ public class Display extends Canvas implements Runnable {
 		addKeyListener(keyBoard);
 		level = new Bedroom();
 		player = new MainPlayer(6, 6, keyBoard);
+		hud = new Hud();
 	}
 	
 	public synchronized void start() {
@@ -102,6 +105,7 @@ public class Display extends Canvas implements Runnable {
 		
 		keyBoard.update();
 		player.tick(); //TODO: change maybe?
+		hud.tick(player);
 		
 	}
 	

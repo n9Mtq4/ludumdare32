@@ -1,4 +1,4 @@
-package com.n9mtq4.ludum.uw.game.player;
+package com.n9mtq4.ludum.uw.game.entity.player;
 
 import com.n9mtq4.ludum.uw.game.items.Item;
 

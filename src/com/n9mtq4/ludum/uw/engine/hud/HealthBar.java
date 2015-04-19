@@ -14,6 +14,7 @@ public class HealthBar {
 	
 	public void render(Screen screen) {
 		
+//		TODO: health bar is not perfectly centered. fix if there is time.
 //		math
 		int maxBars = (screen.width - (16 * 2)) / 8;
 		int fullBars = (maxBars * health) / maxHealth;

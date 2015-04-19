@@ -4,6 +4,7 @@ import com.n9mtq4.ludum.uw.engine.Display;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
+import com.n9mtq4.ludum.uw.engine.input.Mouse;
 
 /**
  * Created by will on 4/18/15 at 3:11 PM.
@@ -52,6 +53,8 @@ public class Player extends Mob {
 		if (input.down) move(0, speed);
 		if (input.left) move(-speed, 0);
 		if (input.right) move(speed, 0);
+//		health--;
+//		if (health < 0) health = 100;
 	}
 	
 }

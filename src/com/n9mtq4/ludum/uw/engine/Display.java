@@ -4,10 +4,11 @@ import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.hud.Hud;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
+import com.n9mtq4.ludum.uw.engine.input.Mouse;
 import com.n9mtq4.ludum.uw.engine.level.Level;
 import com.n9mtq4.ludum.uw.game.level.Bedroom;
 import com.n9mtq4.ludum.uw.game.level.FloorZero;
-import com.n9mtq4.ludum.uw.game.player.MainPlayer;
+import com.n9mtq4.ludum.uw.game.entity.player.MainPlayer;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -46,6 +47,9 @@ public class Display extends Canvas implements Runnable {
 		this.screen = new Screen(WIDTH, HEIGHT);
 		this.keyBoard = new KeyBoard();
 		addKeyListener(keyBoard);
+		Mouse mouse = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 		level = new Bedroom();
 		player = new MainPlayer(6, 6, keyBoard, this);
 		player.init(level);
@@ -93,6 +97,7 @@ public class Display extends Canvas implements Runnable {
 		int yScroll = player.y - screen.height / 2;
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
+		screen.renderCorsair(Mouse.getMouseX(), Mouse.getMouseY());
 		hud.render(screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
@@ -174,6 +179,14 @@ public class Display extends Canvas implements Runnable {
 			
 		}
 		
+	}
+	
+	public static int getWindowWidth() {
+		return WIDTH * SCALE;
+	}
+	
+	public static int getWindowHeight() {
+		return HEIGHT * SCALE;
 	}
 	
 }

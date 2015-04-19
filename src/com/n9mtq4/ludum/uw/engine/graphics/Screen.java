@@ -2,7 +2,6 @@ package com.n9mtq4.ludum.uw.engine.graphics;
 
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 import com.n9mtq4.ludum.uw.game.Sprites;
-import com.n9mtq4.ludum.uw.game.player.MainPlayer;
 
 /**
  * Created by will on 4/17/15.
@@ -36,6 +35,12 @@ public class Screen {
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = 0; // black
 		}
+	}
+	
+	public void renderCorsair(int mouseX, int mouseY) {
+		
+		renderSpriteAbs(mouseX - Sprites.crossair.SIZE / 2, mouseY - Sprites.crossair.SIZE / 2, Sprites.crossair);
+		
 	}
 	
 	public void renderSpriteAbs(int xp, int yp, Sprite sprite) {

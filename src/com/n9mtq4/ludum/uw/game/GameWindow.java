@@ -11,7 +11,7 @@ public class GameWindow {
 	
 	public static void main(String[] args) {
 		
-		JFrame frame = new JFrame("An Unconventional Weapon");
+		JFrame frame = new JFrame("LD32 | Dreamy Pillow | n9Mtq4");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Display game = new Display();

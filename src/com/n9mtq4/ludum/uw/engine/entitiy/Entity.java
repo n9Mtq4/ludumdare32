@@ -6,7 +6,7 @@ import com.n9mtq4.ludum.uw.engine.level.Level;
 /**
  * Created by will on 4/18/15 at 2:58 PM.
  */
-public abstract class Entitiy {
+public abstract class Entity {
 	
 	public int x;
 	public int y;

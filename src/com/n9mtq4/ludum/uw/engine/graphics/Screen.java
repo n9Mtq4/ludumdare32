@@ -61,7 +61,7 @@ public class Screen {
 		
 	}
 	
-	public void renderPlayer(int xp, int yp, Sprite sprite) {
+	public void renderSprite(int xp, int yp, Sprite sprite) {
 		
 		yp -= yOff;
 		xp -= xOff;

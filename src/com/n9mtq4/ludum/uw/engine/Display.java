@@ -123,6 +123,7 @@ public class Display extends Canvas implements Runnable {
 	public void tick() {
 		
 		keyBoard.update();
+		level.tick();
 		player.tick(); //TODO: change maybe?
 		hud.tick(player);
 		

@@ -1,17 +1,24 @@
 package com.n9mtq4.ludum.uw.engine.entitiy.mob;
 
-import com.n9mtq4.ludum.uw.engine.entitiy.Entitiy;
+import com.n9mtq4.ludum.uw.engine.entitiy.Entity;
+import com.n9mtq4.ludum.uw.engine.entitiy.Projectile;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
+import com.n9mtq4.ludum.uw.game.entity.PillowProjectile;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by will on 4/18/15 at 3:06 PM.
  */
-public abstract class Mob extends Entitiy {
+public abstract class Mob extends Entity {
 	
 	public Sprite sprite;
 	public int dir = 0;
 	public boolean moving = false;
+	
+	protected List<Projectile> projectiles = new ArrayList<Projectile>();
 	
 	public void tick() {
 		
@@ -20,7 +27,10 @@ public abstract class Mob extends Entitiy {
 	}
 	
 	public void shoot(int x, int y, double dir) {
-		dir *= 180 / Math.PI;
+//		dir *= 180 / Math.PI;
+		Projectile p = new PillowProjectile(x, y, dir);
+		projectiles.add(p);
+		level.add(p);
 	}
 	
 	public void move(int xd, int yd) {

@@ -1,11 +1,14 @@
 package com.n9mtq4.ludum.uw.engine.level;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.Entity;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 import com.n9mtq4.ludum.uw.game.level.tile.Tiles;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by will on 4/17/15.
@@ -17,6 +20,8 @@ public class Level {
 	public int[] tiles;
 	public int[] tilesInt;
 	
+	private List<Entity> entities = new ArrayList<Entity>();
+	
 	public Level(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -27,6 +32,10 @@ public class Level {
 	public Level(String path) {
 		loadLevel(path);
 		generateLevel();
+	}
+	
+	public void add(Entity entity) {
+		entities.add(entity);
 	}
 	
 	public void generateLevel() {
@@ -51,7 +60,9 @@ public class Level {
 	}
 	
 	public void tick() {
-		
+		for (Entity e : entities) {
+			e.tick();
+		}
 	}
 	
 	private void time() {
@@ -73,7 +84,9 @@ public class Level {
 				getTile(x, y).render(x, y, screen);
 			}
 		}
-		
+		for (Entity e : entities) {
+			e.render(screen);
+		}
 	}
 	
 	public Tile getTile(int x, int y) {

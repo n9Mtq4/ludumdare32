@@ -28,7 +28,7 @@ public class Launcher {
 	public Launcher(String[] args) {
 		
 		this.args = args;
-		frame = new JFrame("Launch n9Mtq4 LD32");
+		frame = new JFrame("Launcher | n9Mtq4 | LD32");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		start = new JButton("Start");

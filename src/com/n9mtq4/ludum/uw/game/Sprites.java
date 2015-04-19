@@ -15,6 +15,7 @@ public class Sprites {
 	public static Sprite wall = new Sprite(Tiles.SIZE, 0x2f2f2f);
 	
 	public static Sprite crossair = new Sprite(Tiles.SIZE, 0, 1, sheet);
+	public static Sprite thrownPillow = new Sprite(Tiles.SIZE, 0, 2, sheet);
 	
 	public static Sprite playerb = new Sprite(Tiles.SIZE, 1, 0, sheet);
 	public static Sprite playerf = new Sprite(Tiles.SIZE, 1, 1, sheet);

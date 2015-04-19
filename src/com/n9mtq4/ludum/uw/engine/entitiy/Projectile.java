@@ -40,7 +40,9 @@ public class Projectile extends Entity {
 		
 		move();
 		checkDistance();
-		
+		if (level.tileCollision(x, y, nx, ny, 16, 16, -20, -24)) {
+			remove();
+		}
 	}
 	
 	protected void move() {
@@ -50,9 +52,7 @@ public class Projectile extends Entity {
 	
 	protected void checkDistance() {
 		double dist = Math.sqrt((xOrigin - x) * (xOrigin - x) + (yOrigin - y) * (yOrigin - y));
-		if (dist > range) {
-			this.remove();
-		}
+		if (dist > range) remove();
 	}
 	
 }

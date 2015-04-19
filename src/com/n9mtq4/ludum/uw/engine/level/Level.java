@@ -35,6 +35,7 @@ public class Level {
 	}
 	
 	public void add(Entity entity) {
+		entity.init(this);
 		entities.add(entity);
 	}
 	
@@ -70,6 +71,18 @@ public class Level {
 	}
 	
 	private void time() {
+		
+	}
+	
+	public boolean tileCollision(double x, double y, double xd, double yd, int sizex, int sizey, int xOff, int yOff) {
+		
+		for (int c = 0; c < 4; c++) {
+			int xt = (((int) x + (int) xd) + c % 2 * sizex + xOff) / Tiles.SIZE;
+			int yt = (((int) y + (int) yd) + c / 2 * sizey + yOff) / Tiles.SIZE;
+			if (this.getTile(xt, yt).isSolid()) return true;
+		}
+		
+		return false;
 		
 	}
 	

@@ -32,7 +32,7 @@ public class Floor extends Level {
 		if (checkBounds(x, y)) return Tiles.voidTile;
 		if (tiles[x + y * width] == 0xff2f2f2f) return Tiles.wall;
 		if (tiles[x + y * width] == 0xfffffffe) return Tiles.wood;
-		if (tiles[x + y * width] == 0xffff0000) return Tiles.bed;
+		if (tiles[x + y * width] == 0xffff0000) return Tiles.spawnBed;
 		if (tiles[x + y * width] == 0xffffff00) return Tiles.pillow;
 //		if (tiles[x + y * width] == 0xff00000f) return Tiles.bed0;
 //		if (tiles[x + y * width] == 0xff0000f0) return Tiles.bed1;

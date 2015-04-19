@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.game.level.tile;
 
+import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 import com.n9mtq4.ludum.uw.engine.level.tile.VoidTile;
 import com.n9mtq4.ludum.uw.game.Sprites;
@@ -9,13 +10,13 @@ import com.n9mtq4.ludum.uw.game.Sprites;
  */
 public class Tiles {
 	
-	public static final int SIZE = 32;
+	public static final int SIZE = (1 << Screen.TILE_SIZE);
 	public static Tile voidTile = new VoidTile();
 	public static Tile wood = new WoodTile();
 	public static Tile wall = new WallTile();
 	
-	public static Tile bed = new BedTile(Sprites.bedc);
-	public static Tile pillow = new BedTile(Sprites.pillow);
+	public static Tile spawnBed = new SpawnBedTile(Sprites.bedc);
+	public static Tile pillow = new SpawnBedTile(Sprites.pillow);
 //	public static Tile bed0 = new BedTile(Sprites.bed0);
 //	public static Tile bed1 = new BedTile(Sprites.bed1);
 //	public static Tile bed2 = new BedTile(Sprites.bed2);

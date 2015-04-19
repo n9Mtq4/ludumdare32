@@ -14,6 +14,10 @@ public abstract class Entitiy {
 	public Level level;
 //	a random for AI?
 	
+	public void init(Level level) {
+		this.level = level;
+	}
+	
 	public void render(Screen screen) {
 		
 	}

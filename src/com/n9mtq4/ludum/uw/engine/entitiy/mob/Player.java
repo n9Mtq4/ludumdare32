@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.engine.entitiy.mob;
 
+import com.n9mtq4.ludum.uw.engine.Display;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
@@ -11,6 +12,7 @@ public class Player extends Mob {
 	
 	private KeyBoard input;
 	private int speed;
+	public Display display;
 	
 	public int health = 100;
 	public int maxHealth = 100;
@@ -20,17 +22,14 @@ public class Player extends Mob {
 	protected Sprite left;
 	protected Sprite right;
 	
-	public Player(int x, int y, KeyBoard input) {
+	public Player(int x, int y, KeyBoard input, Display display) {
 		
 		this.x = x;
 		this.y = y;
 		this.input = input;
 		this.speed = 2;
+		this.display = display;
 		
-	}
-	
-	public Player(KeyBoard input) {
-		this(0, 0, input); //TODO: change later
 	}
 	
 	@Override
@@ -53,13 +52,6 @@ public class Player extends Mob {
 		if (input.down) move(0, speed);
 		if (input.left) move(-speed, 0);
 		if (input.right) move(speed, 0);
-		health--;
-		if (health < 0) health = 100;
-	}
-	
-	@Override
-	public boolean collision() {
-		return super.collision();
 	}
 	
 }

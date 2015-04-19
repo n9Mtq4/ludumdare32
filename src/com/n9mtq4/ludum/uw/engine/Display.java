@@ -6,6 +6,7 @@ import com.n9mtq4.ludum.uw.engine.hud.Hud;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.engine.level.Level;
 import com.n9mtq4.ludum.uw.game.level.Bedroom;
+import com.n9mtq4.ludum.uw.game.level.FloorZero;
 import com.n9mtq4.ludum.uw.game.player.MainPlayer;
 
 import java.awt.*;
@@ -33,6 +34,7 @@ public class Display extends Canvas implements Runnable {
 	private Level level;
 	private KeyBoard keyBoard;
 	private Player player;
+	int progress = 0;
 	
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -45,7 +47,8 @@ public class Display extends Canvas implements Runnable {
 		this.keyBoard = new KeyBoard();
 		addKeyListener(keyBoard);
 		level = new Bedroom();
-		player = new MainPlayer(6, 6, keyBoard);
+		player = new MainPlayer(6, 6, keyBoard, this);
+		player.init(level);
 		hud = new Hud();
 	}
 	
@@ -65,6 +68,16 @@ public class Display extends Canvas implements Runnable {
 		}catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void nextLevel() {
+		
+		if (progress == 0) {
+//			TODO: play cut scene?
+			level = new FloorZero();
+			player.init(level);
+		}
+		
 	}
 	
 	public void render() {
@@ -93,7 +106,7 @@ public class Display extends Canvas implements Runnable {
 		if (DEBUG) {
 			g.setColor(new Color(255, 255, 0));
 			g.setFont(new Font("Verdana", Font.BOLD, 36));
-			g.drawString(String.valueOf(fps), 0, 30);
+			g.drawString(String.valueOf(fps), 0, HEIGHT - 18);
 			g.setFont(new Font("Verdana", Font.BOLD, 12));
 		}
 		
@@ -121,6 +134,7 @@ public class Display extends Canvas implements Runnable {
 		boolean ticked = false;
 		
 		requestFocus();
+		tick();
 		while (running) {
 			
 //			game loop

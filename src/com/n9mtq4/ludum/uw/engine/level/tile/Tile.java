@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.engine.level.tile;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.mob.Mob;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 
@@ -18,6 +19,12 @@ public class Tile {
 	
 	public void render(int x, int y, Screen screen) {
 		screen.renderTile(x << Screen.TILE_SIZE, y << Screen.TILE_SIZE, this); //TODO: is this the problem
+	}
+	
+	public void mobIn(Mob mob) {
+		
+		
+		
 	}
 	
 	public boolean isSolid() {

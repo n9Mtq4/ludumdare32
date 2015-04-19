@@ -23,14 +23,14 @@ public class Sprites {
 	
 	public static Sprite bedc = new Sprite(Tiles.SIZE, 0xff0000);
 	public static Sprite pillow = new Sprite(Tiles.SIZE, 0xf0f0f0);
-//	public static Sprite bed0 = new Sprite(Tiles.SIZE, 0, 0, bed);
-//	public static Sprite bed1 = new Sprite(Tiles.SIZE, 1, 0, bed);
-//	public static Sprite bed2 = new Sprite(Tiles.SIZE, 2, 0, bed);
-//	public static Sprite bed3 = new Sprite(Tiles.SIZE, 3, 0, bed);
-//	public static Sprite bed4 = new Sprite(Tiles.SIZE, 1, 0, bed);
-//	public static Sprite bed5 = new Sprite(Tiles.SIZE, 1, 1, bed);
-//	public static Sprite bed6 = new Sprite(Tiles.SIZE, 1, 2, bed);
-//	public static Sprite bed7 = new Sprite(Tiles.SIZE, 1, 3, bed);
+//	public static Sprite bed0 = new Sprite(Tiles.SIZE, 0, 0, spawnBed);
+//	public static Sprite bed1 = new Sprite(Tiles.SIZE, 1, 0, spawnBed);
+//	public static Sprite bed2 = new Sprite(Tiles.SIZE, 2, 0, spawnBed);
+//	public static Sprite bed3 = new Sprite(Tiles.SIZE, 3, 0, spawnBed);
+//	public static Sprite bed4 = new Sprite(Tiles.SIZE, 1, 0, spawnBed);
+//	public static Sprite bed5 = new Sprite(Tiles.SIZE, 1, 1, spawnBed);
+//	public static Sprite bed6 = new Sprite(Tiles.SIZE, 1, 2, spawnBed);
+//	public static Sprite bed7 = new Sprite(Tiles.SIZE, 1, 3, spawnBed);
 	
 	private static SpriteSheet hudSheet = new SpriteSheet("/textures/hud.png", 32);
 	public static Sprite healthStartFull = new Sprite(8, 0, 0, hudSheet);

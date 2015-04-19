@@ -14,13 +14,15 @@ public class Tiles {
 	public static Tile wood = new WoodTile();
 	public static Tile wall = new WallTile();
 	
-	public static Tile bed0 = new BedTile(Sprites.bed0);
-	public static Tile bed1 = new BedTile(Sprites.bed1);
-	public static Tile bed2 = new BedTile(Sprites.bed2);
-	public static Tile bed3 = new BedTile(Sprites.bed3);
-	public static Tile bed4 = new BedTile(Sprites.bed4);
-	public static Tile bed5 = new BedTile(Sprites.bed5);
-	public static Tile bed6 = new BedTile(Sprites.bed6);
-	public static Tile bed7 = new BedTile(Sprites.bed7);
+	public static Tile bed = new BedTile(Sprites.bedc);
+	public static Tile pillow = new BedTile(Sprites.pillow);
+//	public static Tile bed0 = new BedTile(Sprites.bed0);
+//	public static Tile bed1 = new BedTile(Sprites.bed1);
+//	public static Tile bed2 = new BedTile(Sprites.bed2);
+//	public static Tile bed3 = new BedTile(Sprites.bed3);
+//	public static Tile bed4 = new BedTile(Sprites.bed4);
+//	public static Tile bed5 = new BedTile(Sprites.bed5);
+//	public static Tile bed6 = new BedTile(Sprites.bed6);
+//	public static Tile bed7 = new BedTile(Sprites.bed7);
 	
 }

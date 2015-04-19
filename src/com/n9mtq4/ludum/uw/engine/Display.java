@@ -5,7 +5,6 @@ import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.engine.level.Level;
 import com.n9mtq4.ludum.uw.game.level.Bedroom;
-import com.n9mtq4.ludum.uw.game.level.Floor;
 import com.n9mtq4.ludum.uw.game.player.MainPlayer;
 
 import java.awt.*;
@@ -44,7 +43,7 @@ public class Display extends Canvas implements Runnable {
 		this.keyBoard = new KeyBoard();
 		addKeyListener(keyBoard);
 		level = new Bedroom();
-		player = new MainPlayer(8, 8, keyBoard);
+		player = new MainPlayer(6, 6, keyBoard);
 	}
 	
 	public synchronized void start() {
@@ -76,7 +75,7 @@ public class Display extends Canvas implements Runnable {
 		screen.clear();
 		int xScroll = player.x - screen.width / 2;
 		int yScroll = player.y - screen.height / 2;
-		level.render(xScroll, yScroll, screen); //TODO: fix
+		level.render(xScroll, yScroll, screen);
 		player.render(screen);
 		
 		for (int i = 0; i < pixels.length; i++) {

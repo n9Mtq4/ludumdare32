@@ -30,16 +30,18 @@ public class Floor extends Level {
 	@Override
 	public Tile getTile(int x, int y) {
 		if (checkBounds(x, y)) return Tiles.voidTile;
-		if (tiles[x + y * width] == 0xff0f0f0f) return Tiles.voidTile;
+		if (tiles[x + y * width] == 0xff2f2f2f) return Tiles.wall;
 		if (tiles[x + y * width] == 0xfffffffe) return Tiles.wood;
-		if (tiles[x + y * width] == 0xfff00000) return Tiles.bed0;
-		if (tiles[x + y * width] == 0xfff00001) return Tiles.bed1;
-		if (tiles[x + y * width] == 0xfff00002) return Tiles.bed2;
-		if (tiles[x + y * width] == 0xfff00003) return Tiles.bed3;
-		if (tiles[x + y * width] == 0xfff00004) return Tiles.bed4;
-		if (tiles[x + y * width] == 0xfff00005) return Tiles.bed5;
-		if (tiles[x + y * width] == 0xfff00006) return Tiles.bed6;
-		if (tiles[x + y * width] == 0xfff00007) return Tiles.bed7;
+		if (tiles[x + y * width] == 0xffff0000) return Tiles.bed;
+		if (tiles[x + y * width] == 0xffffff00) return Tiles.pillow;
+//		if (tiles[x + y * width] == 0xff00000f) return Tiles.bed0;
+//		if (tiles[x + y * width] == 0xff0000f0) return Tiles.bed1;
+//		if (tiles[x + y * width] == 0xff000f00) return Tiles.bed2;
+//		if (tiles[x + y * width] == 0xff00f000) return Tiles.bed3;
+//		if (tiles[x + y * width] == 0xffff0f00) return Tiles.bed4;
+//		if (tiles[x + y * width] == 0xfff00000) return Tiles.bed5;
+//		if (tiles[x + y * width] == 0xff0000ff) return Tiles.bed6;
+//		if (tiles[x + y * width] == 0xff000f0f) return Tiles.bed7;
 		return Tiles.voidTile;
 	}
 	

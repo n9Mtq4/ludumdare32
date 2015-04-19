@@ -10,13 +10,23 @@ import java.io.IOException;
 public class SpriteSheet {
 	
 	private String path;
-	public final int SIZE;
+	public int size;
+	public int width;
 	public int pixels[];
+	
+	public SpriteSheet(String path, int width, int height) {
+		this.path = path;
+		this.width = width;
+		this.size = width;
+		pixels = new int[width * height];
+		load();
+	}
 	
 	public SpriteSheet(String path, int size) {
 		this.path = path;
-		this.SIZE = size;
-		pixels = new int[SIZE * SIZE];
+		this.size = size;
+		this.width = this.size;
+		pixels = new int[this.size * this.size];
 		load();
 	}
 	

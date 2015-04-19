@@ -10,6 +10,7 @@ import com.n9mtq4.ludum.uw.game.level.Bedroom;
 import com.n9mtq4.ludum.uw.game.level.FloorZero;
 import com.n9mtq4.ludum.uw.game.entity.player.MainPlayer;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -47,7 +48,7 @@ public class Display extends Canvas implements Runnable {
 		this.screen = new Screen(WIDTH, HEIGHT);
 		this.keyBoard = new KeyBoard();
 		addKeyListener(keyBoard);
-		Mouse mouse = new Mouse();
+		Mouse mouse = new Mouse(this);
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
 		level = new Bedroom();
@@ -97,7 +98,6 @@ public class Display extends Canvas implements Runnable {
 		int yScroll = player.y - screen.height / 2;
 		level.render(xScroll, yScroll, screen);
 		player.render(screen);
-		screen.renderCorsair(Mouse.getMouseX(), Mouse.getMouseY());
 		hud.render(screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
@@ -120,6 +120,23 @@ public class Display extends Canvas implements Runnable {
 		
 	}
 	
+	public void mouseUpdate(int x, int y) {
+		
+//		hud.crossair.render(screen, x, y);
+		
+	}
+	
+	public void customCursor(String path, String name, int x, int y) {
+		try {
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+			BufferedImage image = ImageIO.read(Display.class.getResource(path));
+			Cursor cursor = toolkit.createCustomCursor(image, new Point(x, y), name);
+			setCursor(cursor);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void tick() {
 		
 		keyBoard.update();
@@ -140,7 +157,9 @@ public class Display extends Canvas implements Runnable {
 		boolean ticked = false;
 		
 		requestFocus();
+		requestFocusInWindow();
 		tick();
+		customCursor("/textures/crossair.png", "Crossair", 5, 5);
 		while (running) {
 			
 //			game loop

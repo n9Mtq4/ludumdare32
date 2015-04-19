@@ -37,12 +37,6 @@ public class Screen {
 		}
 	}
 	
-	public void renderCorsair(int mouseX, int mouseY) {
-		
-		renderSpriteAbs(mouseX - Sprites.crossair.SIZE / 2, mouseY - Sprites.crossair.SIZE / 2, Sprites.crossair);
-		
-	}
-	
 	public void renderSpriteAbs(int xp, int yp, Sprite sprite) {
 		
 		for (int y = 0; y < sprite.SIZE; y++) {

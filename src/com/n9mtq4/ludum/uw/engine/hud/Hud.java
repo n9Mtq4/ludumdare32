@@ -9,6 +9,7 @@ import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 public class Hud {
 	
 	public HealthBar hb = new HealthBar();
+//	public Crossair crossair = new Crossair();
 	
 	public void tick(Player p) {
 		
@@ -20,6 +21,7 @@ public class Hud {
 	public void render(Screen screen) {
 		
 		hb.render(screen);
+//		crossair.render(screen);
 		
 	}
 	

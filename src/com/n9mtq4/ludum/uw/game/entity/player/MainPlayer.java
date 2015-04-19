@@ -33,10 +33,10 @@ public class MainPlayer extends Player {
 	@Override
 	public void tick() {
 		super.tick();
-		if (Mouse.getButton() == 1 && fireRate <= 0) {
+		if (Mouse.mouseB == 1 && fireRate <= 0) {
 //			clicked so fire pillow
-			int dx = Mouse.getMouseX() - Display.getWindowWidth() / 2;
-			int dy = Mouse.getMouseY() - Display.getWindowHeight() / 2;
+			int dx = Mouse.mouseX - Display.getWindowWidth() / 2;
+			int dy = Mouse.mouseY - Display.getWindowHeight() / 2;
 			double dir = Math.atan2(dy, dx);
 			shoot(x, y, dir);
 			fireRate = PillowProjectile.rateOfFire;

@@ -38,6 +38,24 @@ public class Screen {
 		}
 	}
 	
+	public void renderSpriteAbs(int xp, int yp, Sprite sprite) {
+		
+		for (int y = 0; y < sprite.SIZE; y++) {
+			int ya = y + yp;
+			for (int x = 0; x < sprite.SIZE; x++) {
+				int xa = x + xp;
+				if (xa < -sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if (xa < 0) xa = 0;
+//				System.out.println((xa + ya * width) + " : (" + xa + " + " + ya + " * " + width + ")");
+				int col = sprite.pixels[x + y * sprite.SIZE];
+				if (col != TRANSPARENT) {
+					pixels[xa + ya * width] = col;
+				}
+			}
+		}
+		
+	}
+	
 	public void renderPlayer(int xp, int yp, Sprite sprite) {
 		
 		yp -= yOff;

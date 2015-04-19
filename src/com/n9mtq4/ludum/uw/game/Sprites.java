@@ -34,10 +34,11 @@ public class Sprites {
 	
 	private static SpriteSheet hudSheet = new SpriteSheet("/textures/hud.png", 32);
 	public static Sprite healthStartFull = new Sprite(8, 0, 0, hudSheet);
-	public static Sprite healthMidFull = new Sprite(8, 0, 1, hudSheet);
-	public static Sprite healthEndFull = new Sprite(8, 0, 2, hudSheet);
-	public static Sprite healthStartEmpty = new Sprite(8, 1, 0, hudSheet);
+	public static Sprite healthMidFull = new Sprite(8, 1, 0, hudSheet);
+	public static Sprite healthEndFull = new Sprite(8, 2, 0, hudSheet);
+	
+	public static Sprite healthStartEmpty = new Sprite(8, 0, 1, hudSheet);
 	public static Sprite healthMidEmpty = new Sprite(8, 1, 1, hudSheet);
-	public static Sprite healthEndEmpty = new Sprite(8, 1, 2, hudSheet);
+	public static Sprite healthEndEmpty = new Sprite(8, 2, 1, hudSheet);
 	
 }

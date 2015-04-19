@@ -53,6 +53,8 @@ public class Player extends Mob {
 		if (input.down) move(0, speed);
 		if (input.left) move(-speed, 0);
 		if (input.right) move(speed, 0);
+		health--;
+		if (health < 0) health = 100;
 	}
 	
 	@Override

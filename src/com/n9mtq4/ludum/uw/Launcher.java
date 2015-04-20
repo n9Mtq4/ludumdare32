@@ -22,6 +22,7 @@ public class Launcher {
 	private JButton start;
 	private JButton source;
 	private JButton exit;
+	private JButton cheater;
 	private JPanel buttonPanel;
 	private JPanel logoPanel;
 	
@@ -35,6 +36,8 @@ public class Launcher {
 		start.addActionListener(new AL());
 		source = new JButton("See Source");
 		source.addActionListener(new AL());
+		cheater = new JButton("Cheat");
+		cheater.addActionListener(new AL());
 		exit = new JButton("Close");
 		exit.addActionListener(new AL());
 		
@@ -51,9 +54,10 @@ public class Launcher {
 			e.printStackTrace();
 		}
 		
-		buttonPanel = new JPanel(new GridLayout(1, 3));
+		buttonPanel = new JPanel(new GridLayout(2, 2));
 		buttonPanel.add(source);
 		buttonPanel.add(start);
+		buttonPanel.add(cheater);
 		buttonPanel.add(exit);
 		
 		frame.add(logoPanel, BorderLayout.CENTER);
@@ -84,6 +88,8 @@ public class Launcher {
 				}
 			}else if (buttonText.equalsIgnoreCase("close")) {
 				System.exit(0);
+			}else if (buttonText.equalsIgnoreCase("cheat")) {
+				new Cheater();
 			}
 		}
 	}

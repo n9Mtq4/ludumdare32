@@ -83,6 +83,7 @@ public class Display extends Canvas implements Runnable {
 			level = new FloorZero();
 			player.init(level);
 			level.add(player);
+			progress++;
 		}
 		
 	}

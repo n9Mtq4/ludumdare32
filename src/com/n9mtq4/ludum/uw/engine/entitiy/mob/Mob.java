@@ -22,7 +22,6 @@ public abstract class Mob extends Entity {
 	protected Random random;
 	private Player player;
 	protected int fireRate = 0;
-	protected List<Projectile> projectiles = new ArrayList<Projectile>();
 	protected int xd;
 	protected int yd;
 	
@@ -39,29 +38,18 @@ public abstract class Mob extends Entity {
 		time++;
 		if (fireRate > 0) fireRate--;
 		level.getTile((x) >> Screen.TILE_SIZE, (y) >> Screen.TILE_SIZE).mobIn(this);
-		clear();
 		
 	}
 	
 	public void shoot(int x, int y, double dir) {
 //		dir *= 180 / Math.PI;
 		Projectile p = getShooter(x + 32, y + 32, dir); //TODO: no var!
-		projectiles.add(p);
-		level.add(p);
+		p.shooter = this;
+		level.addProjectile(p);
 	}
 	
 	public Projectile getShooter(int x, int y, double angle) {
 		return null;
-	}
-	
-	public void clear() {
-		for (int i = 0; i < projectiles.size(); i++) {
-			Projectile p = projectiles.get(i);
-			if (p.isRemoved()) {
-				projectiles.remove(i);
-				level.remove(p);
-			}
-		}
 	}
 	
 	public void move(int xd, int yd) {
@@ -134,7 +122,7 @@ public abstract class Mob extends Entity {
 		
 		if (player == null) player = level.getPlayer();
 		if (getDistance(x, y, player.x, player.y) < 150) {
-			if (time % 4 == 0) {
+			if (time % 2 == 0) {
 				if (x > player.x) xd--;
 				if (x < player.x) xd++;
 				if (y > player.y) yd--;

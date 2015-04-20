@@ -18,6 +18,9 @@ public class SpawnBedTile extends Tile {
 	public void mobIn(Mob mob) {
 		if (mob instanceof Player) {
 			((Player) mob).display.nextLevel();
+			if (((Player) mob).health < ((Player) mob).maxHealth) {
+				((Player) mob).health++;
+			}
 		}
 	}
 }

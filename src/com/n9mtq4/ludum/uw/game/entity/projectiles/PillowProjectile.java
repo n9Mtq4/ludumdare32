@@ -10,12 +10,13 @@ import com.n9mtq4.ludum.uw.game.Sprites;
 public class PillowProjectile extends Projectile {
 	
 	public static int rateOfFire = 40; // delay between fire
+	public static int sRange = 110;
 	
 	public PillowProjectile(int xOrigin, int yOrigin, double angle) {
 		super(xOrigin, yOrigin, angle);
-		range = 100;
+		range = sRange;
 		damage = 10;
-		speed = 3;
+		speed = 4;
 		sprite = Sprites.thrownPillow;
 		calcAngle();
 	}

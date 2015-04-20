@@ -13,10 +13,17 @@ public class SlimeProjectile extends Projectile {
 	public SlimeProjectile(int xOrigin, int yOrigin, double angle) {
 		super(xOrigin, yOrigin, angle);
 		range = 100;
-		damage = 1;
+		damage = 3;
 		speed = 3;
 		sprite = Sprites.slimeProjectile;
 		calcAngle();
+	}
+	
+	@Override
+	public void onProjectileHit(Projectile projectile) {
+		if (projectile instanceof PillowProjectile) {
+			this.remove();
+		}
 	}
 	
 }

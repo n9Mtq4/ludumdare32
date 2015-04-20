@@ -14,6 +14,8 @@ import java.util.ArrayList;
  */
 public class Player extends Mob {
 	
+	public static boolean invincible = false;
+	
 	private KeyBoard input;
 	private int speed;
 	public Display display;
@@ -40,7 +42,8 @@ public class Player extends Mob {
 	@Override
 	public void onProjectileHit(Projectile projectile) {
 		if (!(projectile instanceof PillowProjectile)) {
-			health -= projectile.damage;
+//			TODO: comment for invincibility
+			if (!invincible) health -= projectile.damage;
 			projectile.remove();
 		}
 	}

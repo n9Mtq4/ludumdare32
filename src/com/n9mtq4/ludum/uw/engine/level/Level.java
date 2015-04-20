@@ -1,6 +1,7 @@
 package com.n9mtq4.ludum.uw.engine.level;
 
 import com.n9mtq4.ludum.uw.engine.entitiy.Entity;
+import com.n9mtq4.ludum.uw.engine.entitiy.Projectile;
 import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
@@ -23,6 +24,7 @@ public class Level {
 	public int score = 0;
 	
 	public List<Entity> entities = new ArrayList<Entity>(); //TODO: private
+	public List<Projectile> projectiles = new ArrayList<Projectile>(); //TODO: private?
 	
 	public Level(int width, int height) {
 		this.width = width;
@@ -37,8 +39,14 @@ public class Level {
 	}
 	
 	public void add(Entity entity) {
+		if (entity instanceof Projectile) System.out.println("THIS IS NOT CORRECT YET");
 		entity.init(this);
 		entities.add(entity);
+	}
+	
+	public void addProjectile(Projectile projectile) {
+		projectile.init(this);
+		projectiles.add(projectile);
 	}
 	
 	public void remove(Entity entity) {
@@ -67,6 +75,19 @@ public class Level {
 	public void tick() {
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).tick();
+		}
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).tick();
+		}
+		clearProjectiles();
+	}
+	
+	protected void clearProjectiles() {
+		for (int i = 0; i < projectiles.size(); i++) {
+			Projectile p = projectiles.get(i);
+			if (p.isRemoved()) {
+				projectiles.remove(i);
+			}
 		}
 	}
 	
@@ -110,6 +131,9 @@ public class Level {
 			for (int x = x0; x < x1; x++) {
 				getTile(x, y).render(x, y, screen);
 			}
+		}
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).render(screen);
 		}
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).render(screen);

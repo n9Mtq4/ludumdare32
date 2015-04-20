@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.engine.entitiy;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.mob.Mob;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 
@@ -21,6 +22,7 @@ public class Projectile extends Entity {
 	public double speed;
 	public double range;
 	public double damage;
+	public Mob shooter;
 	
 	public Projectile(int xOrigin, int yOrigin, double angle) {
 		this.xOrigin = xOrigin;
@@ -49,20 +51,31 @@ public class Projectile extends Entity {
 			remove();
 		}
 		checkEntityCollision();
+		checkOtherProjectileCollision();
 		
 	}
 	
 	protected void checkEntityCollision() {
 		
 		for (int i = 0; i < level.entities.size(); i++) {
-			if (!level.entities.get(i).equals(this)) {
-				Entity posTarget = level.entities.get(i);
+			Entity posTarget = level.entities.get(i);
+			if (projectileCollision(posTarget)) {
+				posTarget.onProjectileHit(this);
+			}
+		}
+		
+	}
+	
+//	TODO: fix
+	protected void checkOtherProjectileCollision() {
+		for (int i = 0; i < level.projectiles.size(); i++) {
+			if (!level.projectiles.get(i).equals(this)) {
+				Entity posTarget = level.projectiles.get(i);
 				if (projectileCollision(posTarget)) {
 					posTarget.onProjectileHit(this);
 				}
 			}
 		}
-		
 	}
 	
 	private boolean projectileCollision(Entity target) {

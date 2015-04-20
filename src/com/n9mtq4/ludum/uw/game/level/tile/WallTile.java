@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.game.level.tile;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.Entity;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 import com.n9mtq4.ludum.uw.game.Sprites;
 
@@ -13,7 +14,7 @@ public class WallTile extends Tile {
 	}
 	
 	@Override
-	public boolean isSolid() {
+	public boolean isSolid(Entity entity) {
 		return true;
 	}
 	

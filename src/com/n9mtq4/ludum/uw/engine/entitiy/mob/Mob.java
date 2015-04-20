@@ -78,7 +78,7 @@ public abstract class Mob extends Entity {
 		for (int c = 0; c < 4; c++) {
 			int xt = ((x + xd) + c % 2 * ((int) (Screen.TILE_SIZE * 5))) >> Screen.TILE_SIZE;
 			int yt = ((y + yd) + c / 2 * ((int) (Screen.TILE_SIZE * 5))) >> Screen.TILE_SIZE;
-			if (level.getTile(xt, yt).isSolid()) return true;
+			if (level.getTile(xt, yt).isSolid(this)) return true;
 		}
 		
 		return false;

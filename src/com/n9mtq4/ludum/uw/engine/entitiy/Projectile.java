@@ -47,7 +47,7 @@ public class Projectile extends Entity {
 		
 		move();
 		checkDistance();
-		if (level.tileCollision(x, y, nx, ny, 16, 16, -20, -24)) {
+		if (level.tileCollision(x, y, nx, ny, 16, 16, -20, -24, this)) {
 			remove();
 		}
 		checkEntityCollision();

@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.engine.level.tile;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.Entity;
 import com.n9mtq4.ludum.uw.engine.entitiy.mob.Mob;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
@@ -27,7 +28,7 @@ public class Tile {
 		
 	}
 	
-	public boolean isSolid() {
+	public boolean isSolid(Entity entity) {
 		return false;
 	}
 	

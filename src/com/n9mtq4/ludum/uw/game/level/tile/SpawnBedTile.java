@@ -1,5 +1,6 @@
 package com.n9mtq4.ludum.uw.game.level.tile;
 
+import com.n9mtq4.ludum.uw.engine.entitiy.Entity;
 import com.n9mtq4.ludum.uw.engine.entitiy.mob.Mob;
 import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
@@ -15,6 +16,12 @@ public class SpawnBedTile extends Tile {
 	}
 	
 	@Override
+	public boolean isSolid(Entity entity) {
+//		only players can enter this tile
+		return !(entity instanceof Player);
+	}
+	
+	@Override
 	public void mobIn(Mob mob) {
 		if (mob instanceof Player) {
 			((Player) mob).display.nextLevel();
@@ -23,4 +30,5 @@ public class SpawnBedTile extends Tile {
 			}
 		}
 	}
+	
 }

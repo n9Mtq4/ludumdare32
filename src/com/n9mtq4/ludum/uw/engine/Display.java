@@ -29,6 +29,7 @@ public class Display extends Canvas implements Runnable {
 	
 	private Thread thread;
 	private boolean running;
+	private boolean shouldTick = true;
 	private int fps;
 	
 	private Screen screen;
@@ -116,16 +117,20 @@ public class Display extends Canvas implements Runnable {
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		
 		if (player.health <= 0) {
+//			TODO: loose condition
 			g.setColor(new Color(255, 255, 0));
 			g.setFont(new Font("Verdana", Font.BOLD, 36));
 			g.drawString("You have died.", 240, 50);
 			g.drawString("Your score was : " + level.score + " out of 50", 240, 80);
+			shouldTick = false;
 		}
 		if (player.hasWon) {
+//			TODO: wind condition
 			g.setColor(new Color(255, 255, 0));
 			g.setFont(new Font("Verdana", Font.BOLD, 36));
 			g.drawString("You have Won!.", 240, 50);
 			g.drawString("Your score was : " + level.score + " out of 50", 240, 70);
+			shouldTick = false;
 		}
 		
 		if (DEBUG) {
@@ -190,10 +195,12 @@ public class Display extends Canvas implements Runnable {
 			
 			while (unprocessedSeconds > clockSpeed) {
 				
-				tick();
+				if (shouldTick) {
+					tick();
+					ticked = true;
+					tickCount++;
+				}
 				unprocessedSeconds -= clockSpeed;
-				ticked = true;
-				tickCount++;
 				if (tickCount % GAME_SPEED == 0) {
 					
 					System.out.println(tickCount + " ups, " + frames + " fps");

@@ -30,6 +30,11 @@ public class Projectile extends Entity {
 		this.y = yOrigin;
 	}
 	
+	protected void calcAngle() {
+		nx = speed * Math.cos(angle);
+		ny = speed * Math.sin(angle);
+	}
+	
 	@Override
 	public void render(Screen screen) {
 		screen.renderSprite((int) x - sprite.SIZE, (int) y - sprite.SIZE, sprite);

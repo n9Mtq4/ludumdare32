@@ -1,6 +1,7 @@
 package com.n9mtq4.ludum.uw.engine.level;
 
 import com.n9mtq4.ludum.uw.engine.entitiy.Entity;
+import com.n9mtq4.ludum.uw.engine.entitiy.mob.Player;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
 import com.n9mtq4.ludum.uw.game.level.tile.Tiles;
@@ -44,7 +45,6 @@ public class Level {
 	}
 	
 	public void generateLevel() {
-		
 	}
 	
 	public void loadLevel(String path) {
@@ -56,7 +56,6 @@ public class Level {
 			this.height = i.getHeight();
 			tiles = new int[width * height];
 			i.getRGB(0, 0, width, height, tiles, 0, width);
-			generateLevel();
 			
 		}catch (Exception e) {
 			
@@ -83,6 +82,16 @@ public class Level {
 		}
 		
 		return false;
+		
+	}
+	
+	public Player getPlayer() {
+		
+		for (int i = 0; i < entities.size(); i++) {
+			if (entities.get(i) instanceof Player) return (Player) entities.get(i);
+		}
+//		i hope this never gets reached
+		return null;
 		
 	}
 	

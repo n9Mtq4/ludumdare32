@@ -1,6 +1,7 @@
 package com.n9mtq4.ludum.uw.engine.entitiy;
 
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
+import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.level.Level;
 
 /**
@@ -12,6 +13,7 @@ public abstract class Entity {
 	public int y;
 	public boolean removed = false;
 	public Level level;
+	protected Sprite sprite;
 //	a random for AI?
 	
 	public void init(Level level) {

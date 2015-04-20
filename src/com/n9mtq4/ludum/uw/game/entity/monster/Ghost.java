@@ -4,6 +4,9 @@ import com.n9mtq4.ludum.uw.engine.entitiy.Projectile;
 import com.n9mtq4.ludum.uw.engine.entitiy.mob.Mob;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.game.Sprites;
+import com.n9mtq4.ludum.uw.game.entity.projectiles.SlimeProjectile;
+
+import java.util.Random;
 
 /**
  * Created by will on 4/19/15 at 4:18 PM.
@@ -14,7 +17,7 @@ public class Ghost extends Mob {
 		
 		this.x = x << Screen.TILE_SIZE;
 		this.y = y << Screen.TILE_SIZE;
-		this.sprite = Sprites.bedc;
+		this.sprite = Sprites.ghost;
 		
 	}
 	
@@ -25,12 +28,21 @@ public class Ghost extends Mob {
 	
 	@Override
 	public Projectile getShooter(int x, int y, double angle) {
-		return super.getShooter(x, y, angle);
+		return new SlimeProjectile(x, y, angle);
 	}
+	
+	
 	
 	@Override
 	public void tick() {
+		
 		super.tick();
+		if (time % 60 == 0) {
+			shoot(x, y, 0);
+		}
+//		randomMovementAi();
+		chaserMovementAi();
+		
 	}
 	
 }

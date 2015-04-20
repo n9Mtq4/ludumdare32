@@ -14,6 +14,7 @@ public class Tiles {
 	public static Tile voidTile = new VoidTile();
 	public static Tile wood = new WoodTile();
 	public static Tile wall = new WallTile();
+	public static Tile tropheyTile = new TrophyTile();
 	
 	public static Tile spawnBed = new SpawnBedTile(Sprites.bedc);
 	public static Tile pillow = new SpawnBedTile(Sprites.pillow);

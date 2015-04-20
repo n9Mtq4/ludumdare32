@@ -7,7 +7,7 @@ import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.engine.input.Mouse;
 import com.n9mtq4.ludum.uw.game.Sprites;
-import com.n9mtq4.ludum.uw.game.entity.PillowProjectile;
+import com.n9mtq4.ludum.uw.game.entity.projectiles.PillowProjectile;
 
 /**
  * Created by will on 4/17/15.

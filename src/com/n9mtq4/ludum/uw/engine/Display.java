@@ -54,6 +54,7 @@ public class Display extends Canvas implements Runnable {
 		level = new Bedroom();
 		player = new MainPlayer(6, 6, keyBoard, this);
 		player.init(level);
+		level.add(player);
 		hud = new Hud();
 	}
 	
@@ -81,6 +82,7 @@ public class Display extends Canvas implements Runnable {
 //			TODO: play cut scene?
 			level = new FloorZero();
 			player.init(level);
+			level.add(player);
 		}
 		
 	}
@@ -97,7 +99,7 @@ public class Display extends Canvas implements Runnable {
 		int xScroll = player.x - screen.width / 2;
 		int yScroll = player.y - screen.height / 2;
 		level.render(xScroll, yScroll, screen);
-		player.render(screen);
+//		player.render(screen);
 		hud.render(screen);
 		
 		for (int i = 0; i < pixels.length; i++) {
@@ -141,7 +143,7 @@ public class Display extends Canvas implements Runnable {
 		
 		keyBoard.update();
 		level.tick();
-		player.tick(); //TODO: change maybe?
+//		player.tick(); //TODO: change maybe?
 		hud.tick(player);
 		
 	}
@@ -159,7 +161,7 @@ public class Display extends Canvas implements Runnable {
 		requestFocus();
 		requestFocusInWindow();
 		tick();
-		customCursor("/textures/crossair.png", "Crossair", 5, 5);
+		customCursor("/textures/crossair.png", "Crosshair", 5, 5);
 		while (running) {
 			
 //			game loop

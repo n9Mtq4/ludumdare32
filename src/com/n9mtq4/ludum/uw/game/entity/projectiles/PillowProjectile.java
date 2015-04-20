@@ -1,4 +1,4 @@
-package com.n9mtq4.ludum.uw.game.entity;
+package com.n9mtq4.ludum.uw.game.entity.projectiles;
 
 import com.n9mtq4.ludum.uw.engine.entitiy.Projectile;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
@@ -13,16 +13,11 @@ public class PillowProjectile extends Projectile {
 	
 	public PillowProjectile(int xOrigin, int yOrigin, double angle) {
 		super(xOrigin, yOrigin, angle);
-		range = 80;
+		range = 100;
 		damage = 10;
 		speed = 3;
 		sprite = Sprites.thrownPillow;
-		nx = speed * Math.cos(angle);
-		ny = speed * Math.sin(angle);
+		calcAngle();
 	}
 	
-	@Override
-	public void render(Screen screen) {
-		super.render(screen);
-	}
 }

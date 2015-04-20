@@ -18,8 +18,7 @@ public class TrophyTile extends Tile {
 	public void mobIn(Mob mob) {
 		
 		if (mob instanceof MainPlayer) {
-//			TODO: win condition
-			System.out.println("WIN");
+			((MainPlayer) mob).hasWon = true;
 		}
 		
 	}

@@ -102,6 +102,10 @@ public class Display extends Canvas implements Runnable {
 //		player.render(screen);
 		hud.render(screen);
 		
+		if (player.health <= 0 || player.hasWon) {
+			screen.clear();
+		}
+		
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
@@ -110,10 +114,23 @@ public class Display extends Canvas implements Runnable {
 		g.setColor(Color.BLACK);
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		
+		if (player.health <= 0) {
+			g.setColor(new Color(255, 255, 0));
+			g.setFont(new Font("Verdana", Font.BOLD, 36));
+			g.drawString("You have died.", 240, 50);
+			g.drawString("Your score was : " + level.score + " out of 50", 240, 80);
+		}
+		if (player.hasWon) {
+			g.setColor(new Color(255, 255, 0));
+			g.setFont(new Font("Verdana", Font.BOLD, 36));
+			g.drawString("You have Won!.", 240, 50);
+			g.drawString("Your score was : " + level.score + " out of 50", 240, 70);
+		}
+		
 		if (DEBUG) {
 			g.setColor(new Color(255, 255, 0));
 			g.setFont(new Font("Verdana", Font.BOLD, 36));
-			g.drawString(String.valueOf(fps), 0, HEIGHT - 18);
+			g.drawString(String.valueOf(fps + " fps | " + level.score + " Score out of 50"), 0, HEIGHT - 18);
 			g.setFont(new Font("Verdana", Font.BOLD, 12));
 		}
 		

@@ -20,6 +20,7 @@ public class Level {
 	public int height;
 	public int[] tiles;
 	public int[] tilesInt;
+	public int score = 0;
 	
 	public List<Entity> entities = new ArrayList<Entity>(); //TODO: private
 	

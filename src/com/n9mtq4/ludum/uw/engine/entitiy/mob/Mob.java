@@ -113,19 +113,38 @@ public abstract class Mob extends Entity {
 		return (int) Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 	}
 	
+	public void tryToShoot(int x, int y, double dir, int rate) {
+		if (fireRate <= 0) {
+			shoot(x, y, dir);
+			fireRate = rate;
+		}
+	}
+	
+	public void shootingAi(int range, int rate) {
+		Player p = level.getPlayer();
+		if (getDistance(x, y, p.x, p.y) < range) {
+			double dx = p.x - x;
+			double dy = p.y - y;
+			double dir = Math.atan2(dy, dx);
+			tryToShoot(x, y, dir, rate);
+		}
+	}
+	
 	public void chaserMovementAi() {
 		
-		if (time % 2 == 0) {
-			if (player == null) player = level.getPlayer();
-			if (getDistance(x, y, player.x, player.y) < 150) {
+		if (player == null) player = level.getPlayer();
+		if (getDistance(x, y, player.x, player.y) < 150) {
+			if (time % 4 == 0) {
 				if (x > player.x) xd--;
 				if (x < player.x) xd++;
 				if (y > player.y) yd--;
 				if (y < player.y) yd++;
-			}else {
-				randomMovementAi();
+				move(xd, yd);
 			}
+		}else {
+			randomMovementAi();
 		}
+		
 	}
 	
 }

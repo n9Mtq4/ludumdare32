@@ -1,9 +1,13 @@
 package com.n9mtq4.ludum.uw.engine.entitiy.mob;
 
 import com.n9mtq4.ludum.uw.engine.Display;
+import com.n9mtq4.ludum.uw.engine.entitiy.Projectile;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
+import com.n9mtq4.ludum.uw.game.entity.projectiles.PillowProjectile;
+
+import java.util.ArrayList;
 
 /**
  * Created by will on 4/18/15 at 3:11 PM.
@@ -16,6 +20,7 @@ public class Player extends Mob {
 	
 	public int health = 100;
 	public int maxHealth = 100;
+	public boolean hasWon = false;
 	
 	protected Sprite foward;
 	protected Sprite backwards;
@@ -30,6 +35,14 @@ public class Player extends Mob {
 		this.speed = 2;
 		this.display = display;
 		
+	}
+	
+	@Override
+	public void onProjectileHit(Projectile projectile) {
+		if (!(projectile instanceof PillowProjectile)) {
+			health -= projectile.damage;
+			projectile.remove();
+		}
 	}
 	
 	@Override
@@ -52,8 +65,6 @@ public class Player extends Mob {
 		if (input.down) move(0, speed);
 		if (input.left) move(-speed, 0);
 		if (input.right) move(speed, 0);
-//		health--;
-//		if (health < 0) health = 100;
 	}
 	
 }

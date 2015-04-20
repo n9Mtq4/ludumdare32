@@ -8,10 +8,12 @@ import com.n9mtq4.ludum.uw.game.Sprites;
  */
 public class SlimeProjectile extends Projectile {
 	
+	public static int rateOfFire = 50;
+	
 	public SlimeProjectile(int xOrigin, int yOrigin, double angle) {
 		super(xOrigin, yOrigin, angle);
 		range = 100;
-		damage = 10;
+		damage = 1;
 		speed = 3;
 		sprite = Sprites.slimeProjectile;
 		calcAngle();

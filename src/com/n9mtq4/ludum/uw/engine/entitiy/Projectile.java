@@ -8,7 +8,7 @@ import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
  */
 public class Projectile extends Entity {
 	
-	public static int rateOfFire;
+	public static int rateOfFire = 20;
 	
 	public double x;
 	public double y;
@@ -18,9 +18,9 @@ public class Projectile extends Entity {
 	protected Sprite sprite;
 	protected double nx;
 	protected double ny;
-	protected double speed;
-	protected double range;
-	protected double damage;
+	public double speed;
+	public double range;
+	public double damage;
 	
 	public Projectile(int xOrigin, int yOrigin, double angle) {
 		this.xOrigin = xOrigin;
@@ -48,6 +48,27 @@ public class Projectile extends Entity {
 		if (level.tileCollision(x, y, nx, ny, 16, 16, -20, -24)) {
 			remove();
 		}
+		checkEntityCollision();
+		
+	}
+	
+	protected void checkEntityCollision() {
+		
+		for (int i = 0; i < level.entities.size(); i++) {
+			if (!level.entities.get(i).equals(this)) {
+				Entity posTarget = level.entities.get(i);
+				if (projectileCollision(posTarget)) {
+					posTarget.onProjectileHit(this);
+				}
+			}
+		}
+		
+	}
+	
+	private boolean projectileCollision(Entity target) {
+		
+		return (Math.abs(target.x - x) < 32 && Math.abs(target.y - y) < 32);
+		
 	}
 	
 	protected void move() {

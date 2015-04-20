@@ -36,4 +36,8 @@ public abstract class Entity {
 		return removed;
 	}
 	
+	public void onProjectileHit(Projectile projectile) {
+		
+	}
+	
 }

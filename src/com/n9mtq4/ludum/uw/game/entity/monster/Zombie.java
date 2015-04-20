@@ -1,13 +1,12 @@
 package com.n9mtq4.ludum.uw.game.entity.monster;
 
-import com.n9mtq4.ludum.uw.engine.entitiy.mob.Mob;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.game.Sprites;
 
 /**
  * Created by will on 4/19/15 at 7:09 PM.
  */
-public class Zombie extends Mob {
+public class Zombie extends Monster {
 	
 	public Zombie(int x, int y) {
 		

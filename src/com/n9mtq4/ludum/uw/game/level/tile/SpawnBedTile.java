@@ -11,6 +11,8 @@ import com.n9mtq4.ludum.uw.engine.level.tile.Tile;
  */
 public class SpawnBedTile extends Tile {
 	
+	protected boolean healPlayer = false;
+	
 	public SpawnBedTile(Sprite sprite) {
 		super(sprite);
 	}
@@ -25,10 +27,12 @@ public class SpawnBedTile extends Tile {
 	public void mobIn(Mob mob) {
 		if (mob instanceof Player) {
 			((Player) mob).display.nextLevel();
-			if (((Player) mob).health < ((Player) mob).maxHealth) {
-				((Player) mob).health++;
+			if (healPlayer) {
+				if (((Player) mob).health < ((Player) mob).maxHealth) {
+					((Player) mob).health++;
+				}
 			}
 		}
 	}
 	
-}
+} 

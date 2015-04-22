@@ -19,7 +19,7 @@ public class MainPlayer extends Player {
 	public MainPlayer(int x, int y, KeyBoard input, Display display) {
 		super(x * (1 << Screen.TILE_SIZE), y * (1 << Screen.TILE_SIZE), input, display);
 		this.backwards = Sprites.playerb;
-		this.foward = Sprites.playerf;
+		this.forward = Sprites.playerf;
 		this.left = Sprites.playerl;
 		this.right = Sprites.playerr;
 		this.fireRate = PillowProjectile.rateOfFire;

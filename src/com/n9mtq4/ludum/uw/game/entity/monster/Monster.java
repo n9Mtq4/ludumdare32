@@ -21,8 +21,6 @@ public class Monster extends Mob {
 		if (health <= 0) {
 			level.remove(this);
 			level.score++;
-//			TODO: debug info
-			System.out.println("Monster Death");
 		}
 		
 	}

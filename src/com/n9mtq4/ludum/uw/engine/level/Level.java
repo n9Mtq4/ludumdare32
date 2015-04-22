@@ -23,8 +23,8 @@ public class Level {
 	public int[] tilesInt;
 	public int score = 0;
 	
-	public List<Entity> entities = new ArrayList<Entity>(); //TODO: private
-	public List<Projectile> projectiles = new ArrayList<Projectile>(); //TODO: private?
+	public List<Entity> entities = new ArrayList<Entity>();
+	public List<Projectile> projectiles = new ArrayList<Projectile>();
 	
 	public Level(int width, int height) {
 		this.width = width;

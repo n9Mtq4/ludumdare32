@@ -9,6 +9,8 @@ import com.n9mtq4.ludum.uw.game.level.tile.Tiles;
  */
 public class Sprites {
 	
+	public static int SIZE = 32;
+	
 	private static SpriteSheet sheet = new SpriteSheet("/textures/spritesheet.png", 256);
 	public static Sprite wood = new Sprite(Tiles.SIZE, 0, 0, sheet);
 	public static Sprite voidSprite = new Sprite(Tiles.SIZE, 0x000000);

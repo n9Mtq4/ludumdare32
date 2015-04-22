@@ -166,7 +166,6 @@ public class Display extends Canvas implements Runnable {
 		
 		keyBoard.update();
 		level.tick();
-//		player.tick(); //TODO: change maybe?
 		hud.tick(player);
 		
 	}

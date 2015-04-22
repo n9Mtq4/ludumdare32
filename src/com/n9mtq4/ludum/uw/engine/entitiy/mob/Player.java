@@ -7,8 +7,6 @@ import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.input.KeyBoard;
 import com.n9mtq4.ludum.uw.game.entity.projectiles.PillowProjectile;
 
-import java.util.ArrayList;
-
 /**
  * Created by will on 4/18/15 at 3:11 PM.
  */
@@ -24,7 +22,7 @@ public class Player extends Mob {
 	public int maxHealth = 100;
 	public boolean hasWon = false;
 	
-	protected Sprite foward;
+	protected Sprite forward;
 	protected Sprite backwards;
 	protected Sprite left;
 	protected Sprite right;
@@ -42,7 +40,6 @@ public class Player extends Mob {
 	@Override
 	public void onProjectileHit(Projectile projectile) {
 		if (!(projectile instanceof PillowProjectile)) {
-//			TODO: comment for invincibility
 			if (!invincible) health -= projectile.damage;
 			projectile.remove();
 		}
@@ -51,7 +48,7 @@ public class Player extends Mob {
 	@Override
 	public void render(Screen screen) {
 		if (dir == 0) {
-			screen.renderSprite(x, y, foward);
+			screen.renderSprite(x, y, forward);
 		}else if (dir == 1) {
 			screen.renderSprite(x, y, right);
 		}else if (dir == 2) {

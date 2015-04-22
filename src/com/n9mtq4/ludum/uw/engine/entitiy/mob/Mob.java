@@ -5,6 +5,7 @@ import com.n9mtq4.ludum.uw.engine.entitiy.Projectile;
 import com.n9mtq4.ludum.uw.engine.graphics.Screen;
 import com.n9mtq4.ludum.uw.engine.graphics.Sprite;
 import com.n9mtq4.ludum.uw.engine.level.Level;
+import com.n9mtq4.ludum.uw.game.Sprites;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public abstract class Mob extends Entity {
 	
 	public void shoot(int x, int y, double dir) {
 //		dir *= 180 / Math.PI;
-		Projectile p = getShooter(x + 32, y + 32, dir); //TODO: no var!
+		Projectile p = getShooter(x + Sprites.SIZE, y + Sprites.SIZE, dir);
 		p.shooter = this;
 		level.addProjectile(p);
 	}
@@ -76,8 +77,8 @@ public abstract class Mob extends Entity {
 		
 		boolean solid = false;
 		for (int c = 0; c < 4; c++) {
-			int xt = ((x + xd) + c % 2 * ((int) (Screen.TILE_SIZE * 5))) >> Screen.TILE_SIZE;
-			int yt = ((y + yd) + c / 2 * ((int) (Screen.TILE_SIZE * 5))) >> Screen.TILE_SIZE;
+			int xt = ((x + xd) + c % 2 * (Screen.TILE_SIZE * 5)) >> Screen.TILE_SIZE;
+			int yt = ((y + yd) + c / 2 * (Screen.TILE_SIZE * 5)) >> Screen.TILE_SIZE;
 			if (level.getTile(xt, yt).isSolid(this)) return true;
 		}
 		

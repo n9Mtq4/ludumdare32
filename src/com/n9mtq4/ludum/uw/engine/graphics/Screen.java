@@ -11,8 +11,6 @@ public class Screen {
 	public static final int TILE_SIZE = 5; // 2^TILE_SIZE is the pixel equivalent
 	private static final int LEVEL_WIDTH = 64;
 	private static final int LEVEL_HEIGHT = 64;
-	private static final int LEVEL_WIDTH_MASK = LEVEL_WIDTH - 1;
-	private static final int LEVEL_HEIGHT_MASK = LEVEL_HEIGHT - 1;
 	private static final int TRANSPARENT = 0xffff00ff;
 	
 	public int width;

@@ -29,6 +29,7 @@ public class Player extends Mob {
 	
 	public Player(int x, int y, KeyBoard input, Display display) {
 		
+		super(x, y);
 		this.x = x;
 		this.y = y;
 		this.input = input;

@@ -67,7 +67,7 @@ public class Level {
 			i.getRGB(0, 0, width, height, tiles, 0, width);
 			
 		}catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 	}

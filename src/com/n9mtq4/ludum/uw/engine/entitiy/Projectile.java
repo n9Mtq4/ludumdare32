@@ -16,7 +16,6 @@ public class Projectile extends Entity {
 	protected final int xOrigin;
 	protected final int yOrigin;
 	protected double angle;
-	protected Sprite sprite;
 	protected double nx;
 	protected double ny;
 	public double speed;

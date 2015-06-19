@@ -10,6 +10,10 @@ public class Monster extends Mob {
 	public int health;
 	public int maxHealth;
 	
+	public Monster(int x, int y) {
+		super(x, y);
+	}
+	
 	public void initHealth(int hp) {
 		this.health = hp;
 		this.maxHealth = hp;

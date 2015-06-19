@@ -25,8 +25,17 @@ public abstract class Mob extends Entity {
 	protected int fireRate = 0;
 	protected int xd;
 	protected int yd;
+	public int spawnX;
+	public int spawnY;
 	
 	protected int time;
+	
+	public Mob(int x, int y) {
+		this.spawnX = x;
+		this.spawnY = y;
+		this.x = x;
+		this.y = y;
+	}
 	
 	@Override
 	public void init(Level level) {
@@ -39,7 +48,15 @@ public abstract class Mob extends Entity {
 		time++;
 		if (fireRate > 0) fireRate--;
 		level.getTile((x) >> Screen.TILE_SIZE, (y) >> Screen.TILE_SIZE).mobIn(this);
+		if (isOutSideLevel()) {
+			x = spawnX;
+			y = spawnY;
+		}
 		
+	}
+	
+	protected boolean isOutSideLevel() {
+		return (x < 0 || y < 0 || x > level.width << Screen.TILE_SIZE || y > level.height << Screen.TILE_SIZE);
 	}
 	
 	public void shoot(int x, int y, double dir) {
@@ -75,7 +92,6 @@ public abstract class Mob extends Entity {
 	
 	public boolean collision(int xd, int yd) {
 		
-		boolean solid = false;
 		for (int c = 0; c < 4; c++) {
 			int xt = ((x + xd) + c % 2 * (Screen.TILE_SIZE * 5)) >> Screen.TILE_SIZE;
 			int yt = ((y + yd) + c / 2 * (Screen.TILE_SIZE * 5)) >> Screen.TILE_SIZE;

@@ -10,6 +10,7 @@ public class Zombie extends Monster {
 	
 	public Zombie(int x, int y) {
 		
+		super(x, y);
 		this.x = x << Screen.TILE_SIZE;
 		this.y = y << Screen.TILE_SIZE;
 		this.sprite = Sprites.ghost;
